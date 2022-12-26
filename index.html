@@ -21,34 +21,44 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <h1>Peru</h1>
-        <ul>
-          <li>Monday 08:00</li>
-          <li>Mostly Cloudy</li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-              alt="cloudy"
-            />
-            22°C | °F
-          </div>
-          <div class="col-6">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <div class="overview">
+            <h1>Peru</h1>
             <ul>
-              <li>Precipitation: 2%</li>
-              <li>Humidity: 77%</li>
-              <li>Wind: 16km/h</li>
+              <li>Monday 08:00</li>
+              <li>Mostly Cloudy</li>
             </ul>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="d-flex weather-temperature">
+                <img
+                  src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+                  alt="cloudy"
+                  id="icon"
+                />
+                <div>
+                  <strong id="temperature">22</strong
+                  ><span class="units">°C |<a href="#">°F</a> </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Precipitation: 2%</li>
+                <li>Humidity: 77%</li>
+                <li>Wind: 16km/h</li>
+              </ul>
+            </div>
           </div>
         </div>
         <small>
           <a
             href="https://github.com/sharzad/Vanilla-weather-app"
             target="_blank"
-            >open-source code, by Shahrzad B.</a
-          ></small
+            >open-source code</a
+          >, by Shahrzad B.</small
         >
       </div>
     </div>
