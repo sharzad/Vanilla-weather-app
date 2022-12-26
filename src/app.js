@@ -120,4 +120,5 @@ function getCurrentLocation() {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+search("Peru");
 getCurrentLocation();
