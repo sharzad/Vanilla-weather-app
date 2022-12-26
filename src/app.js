@@ -106,6 +106,18 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
+function searchLocation(position) {
+  let apiKey = "e2b9b76cb3bcb2d9cce084cc724f675b";
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat="
+    .concat(position.coords.latitude, "&lon=")
+    .concat(position.coords.longitude, "&appid=")
+    .concat(apiKey, "&units=metric");
+  axios.get(apiUrl).then(displayTemperature);
+}
+function getCurrentLocation() {
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-search("Peru");
+getCurrentLocation();
