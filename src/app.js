@@ -70,8 +70,7 @@ function getForecast(coordinates) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
-functiondisplayTemperature(response);
-{
+function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let discriptionElement = document.querySelector("#discription");
@@ -87,4 +86,26 @@ functiondisplayTemperature(response);
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
   dateElement.innerHTML = formateData(response.data.dt * 1000);
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
+function search(city) {
+  let apiKey = "e2b9b76cb3bcb2d9cce084cc724f675b";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+search("Peru");
