@@ -78,7 +78,7 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
-  celsiousTemperature = response.data.main.temp;
+  let celsiousTemperature = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(celsiousTemperature);
   cityElement.innerHTML = response.data.name;
@@ -96,6 +96,7 @@ function displayTemperature(response) {
 }
 function search(city) {
   let apiKey = "e2b9b76cb3bcb2d9cce084cc724f675b";
+
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
 }
@@ -118,7 +119,31 @@ function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let Cil = temperatureElement.innerHTML;
+
+  toFahrenheit = Cil * 1.8 + 32;
+
+  temperatureElement.innerHTML = Math.round(toFahrenheit);
+}
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let Far = temperatureElement.innerHTML;
+  toCelsius = (Far - 32) / 1.8;
+
+  temperatureElement.innerHTML = Math.round(toCelsius);
+}
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 search("Peru");
 getCurrentLocation();
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertToCelsius);
