@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #30cfd0 50%, #330867 100%);
 }
 
 h1 {
@@ -31,6 +32,7 @@ li::first-letter {
   margin: 30px auto;
 }
 .weather-app {
+  background: linear-gradient(-225deg, #b6cee8 0%, #f578dc 100%);
   padding: 30px;
   border: 1px solid goldenrod;
   border-radius: 10px;
