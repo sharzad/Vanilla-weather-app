@@ -66,7 +66,7 @@ function displayForecast(response) {
 }
 
 function getForecast(coordinates) {
-  let apiKey = "e2b9b76cb3bcb2d9cce084cc724f675b";
+  let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
@@ -95,7 +95,7 @@ function displayTemperature(response) {
   getForecast(response.data.coord);
 }
 function search(city) {
-  let apiKey = "e2b9b76cb3bcb2d9cce084cc724f675b";
+  let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayTemperature);
@@ -108,7 +108,7 @@ function handleSubmit(event) {
 }
 
 function searchLocation(position) {
-  let apiKey = "e2b9b76cb3bcb2d9cce084cc724f675b";
+  let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat="
     .concat(position.coords.latitude, "&lon=")
     .concat(position.coords.longitude, "&appid=")
@@ -147,3 +147,4 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
+displayForecast();
