@@ -125,12 +125,16 @@ function convertToFahrenheit(event) {
   let Cil = temperatureElement.innerHTML;
 
   toFahrenheit = Cil * 1.8 + 32;
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 
   temperatureElement.innerHTML = Math.round(toFahrenheit);
 }
 
 function convertToCelsius(event) {
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature");
   let Far = temperatureElement.innerHTML;
   toCelsius = (Far - 32) / 1.8;
@@ -140,11 +144,12 @@ function convertToCelsius(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-search("Peru");
-getCurrentLocation();
+
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
+search("Peru");
+getCurrentLocation();
 displayForecast();
